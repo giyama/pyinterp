@@ -1,0 +1,7 @@
+{
+  "base_image": "python:3.8.8-buster",
+  "runtime_deps": ["build-essential"],
+  "test_command": "make audit && make test",
+  "allow_deploy": false,
+  "branches": {}
+}
