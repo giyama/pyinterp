@@ -1,9 +1,12 @@
 # Pyinterp
 Built version of Pyinterp.
 
-*Operation System:* debian
-*Architeture:* x86_64
-*Python:* 3.7.12
+**Operation System:** debian
+
+**Architeture:** x86_64
+
+**Python:** 3.7.12
+
 
 ### Usage
 
