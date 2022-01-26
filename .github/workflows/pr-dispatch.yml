@@ -1,0 +1,77 @@
+name: Pull request actions
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_branch:
+        type: environment
+        description: Select the source branch
+      destination_branch:
+        type: environment
+        description: Select the destination branch
+      jira_issue_code:
+        type: string
+        description: "What's the Jira issue code? i.e.: DS-555"
+      bump_version:
+        type: choice
+        description: Would you like to bump the version and create a tag? (only works for PR to master/main)
+        options:
+          - No
+          - major
+          - minor
+          - patch
+      pr_reviewer:
+        type: choice
+        description: Pull Request Reviewer
+        options:
+          - charles31415
+          - FatemaTuzZohra
+          - giyama
+          - gnieuwenhuis
+          - loren-dueck
+      jira_reviewer:
+        type: choice
+        description: Assign ticket in Jira
+        options:
+          - Charles Cuell - 5ba91ace46f0e279bfe84982
+          - Fatema Zohra - 5b8ec3a33e56f62bec08bb42
+          - Greg Nieuwenhuis - 5c461d643ed79267250fef1f
+          - Gregory Iyama - 618a7864785cb2006af3c460
+          - Loren Dueck - 5e78f20f54fa650c3bb98509
+
+jobs:
+  call_pull_request_workflow:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: pull-request
+      id: open-pr
+      uses: repo-sync/pull-request@v2
+      with:
+        source_branch: ${{ github.event.inputs.source_branch }}
+        destination_branch: ${{ github.event.inputs.destination_branch }}
+        pr_title: "Pulling ${{ github.ref }} into master"
+        pr_body: ":crown: *An automated PR*"
+        pr_template: ".github/pull_request_template.md"
+        pr_reviewer: ${{ github.event.inputs.pr_reviewer }}
+        pr_assignee: ${{ github.event.inputs.pr_reviewer }}
+        pr_label: "auto-pr"
+        pr_allow_empty: true
+    - name: output-url
+      run: echo ${{steps.open-pr.outputs.pr_url}}
+    - name: output-number
+      run: echo ${{steps.open-pr.outputs.pr_number}}
+    - name: output-has-changed-files
+      run: echo ${{steps.open-pr.outputs.has_changed_files}}
+
+    - name: Change status in Jira
+      run: |
+        echo "----> jira_issue_code: ${{ github.event.inputs.jira_issue_code }}"
+        echo "----> source_branch: ${{ github.event.inputs.source_branch }}"
+        echo "----> destination_branch: ${{ github.event.inputs.destination_branch }}"
+        echo "----> pr_reviewer: ${{ github.event.inputs.pr_reviewer }}"
+
+    - name: Assign ticket in Jira
+      run: |
+        echo "----> jira_issue_code: ${{ github.event.inputs.jira_issue_code }}"
+        echo "----> jira_reviewer: ${{ github.event.inputs.jira_reviewer }}"
