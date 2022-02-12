@@ -6,7 +6,7 @@ import subprocess
 from distutils.command.build import build as _build
 
 import setuptools
-
+# test
 CUSTOM_COMMANDS = [['apt-get', 'update'],
     ['apt-get', '--assume-yes', 'install', 'unzip'],
     ['apt-get', '--assume-yes', 'install', 'default-jre'],
