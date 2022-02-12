@@ -10,7 +10,7 @@ on:
 jobs:
   build:
     name: build
-    if: ${{ github.event.inputs.job-name == 'build' }}
+    # if: ${{ github.event.inputs.job-name == 'build' }}
     runs-on: ubuntu-latest
     
     steps:
