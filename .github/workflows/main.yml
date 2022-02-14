@@ -24,7 +24,7 @@ jobs:
         echo "cred: ${{ secrets.DS_JIRA_API_CREDENTIAL }}"
         echo "test1: ${{ secrets.TEST1 }}"
      
-    - id: 'auth'
+    - name: 'auth'
       uses: 'google-github-actions/auth@v0'
       with:
         credentials_json: '${{ secrets.DS_GCP_CREDENTIALS_DEV }}'
