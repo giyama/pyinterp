@@ -19,10 +19,10 @@ jobs:
     
     - name: echo
       run: |
-       echo "this is build job"
-       echo "test: ${{ secrets.TEST }}"
-       echo "cred: ${{ secrets.DS_JIRA_API_CREDENTIAL }}"
-       echo "test1: ${{ secrets.TEST1 }}"
+        echo "this is build job"
+        echo "test: ${{ secrets.TEST }}"
+        echo "cred: ${{ secrets.DS_JIRA_API_CREDENTIAL }}"
+        echo "test1: ${{ secrets.TEST1 }}"
      
 
     - name: Other steps 
