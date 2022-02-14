@@ -16,7 +16,19 @@ jobs:
     steps:
 
     - uses: actions/checkout@v2
-    
+
+    - name: tries to install
+      run: pip install git+ssh://git@github.com/granduke/Smoggy@v0.1.1
+      
+    - name: Setup SSH
+      uses: MrSquaare/ssh-setup-action@v1
+      with:
+        host: github.com
+        private-key: ${{ secrets.DS_GITHUB_PRIVATE_KEY }}
+         
+    - name: tries to install
+      run: pip install git+ssh://git@github.com/granduke/Smoggy@v0.1.1
+      
     - name: echo
       run: |
         echo "this is build job"
