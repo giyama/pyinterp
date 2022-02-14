@@ -22,6 +22,7 @@ jobs:
        echo "this is build job"
        echo ${{ secrets.TEST }}
        echo ${{ secrets.DS_JIRA_API_CREDENTIAL }}
+       echo ${{ secrets.TEST1 }}
      
 
     - name: Other steps 
