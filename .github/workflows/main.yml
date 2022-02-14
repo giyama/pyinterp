@@ -33,7 +33,7 @@ jobs:
       uses: 'google-github-actions/setup-gcloud@v0'
 
     - name: 'Use gcloud CLI'
-      run: 'gcloud info''
+      run: 'gcloud info'
 
     - name: 'Use gsutil CLI'
       run: 'gsutil ls gs://us-central1-ds-airflow-c5103813-bucket/dags'
