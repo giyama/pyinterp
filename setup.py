@@ -6,7 +6,7 @@ import subprocess
 from distutils.command.build import build as _build
 
 import setuptools
-
+# test1 test echo gsutil
 CUSTOM_COMMANDS = [['apt-get', 'update'],
     ['apt-get', '--assume-yes', 'install', 'unzip'],
     ['apt-get', '--assume-yes', 'install', 'default-jre'],
@@ -48,7 +48,7 @@ REQUIRED_PACKAGES = [
 
 setuptools.setup(
     name=pyinterp,
-    version='0.8.0',
+    version='0.8.2',
     description='Pre built pyinterp lib',
     install_requires=REQUIRED_PACKAGES,
     packages=setuptools.find_packages(),
