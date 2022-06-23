@@ -30,11 +30,11 @@ jobs:
     - name: Push new version to main/master
       uses: ad-m/github-push-action@v0.6.0
       with:
-        github_token: ${{ secrets.DS_GITHUB_TOKEN }}
+        github_token: ${{ secrets.GH_TOKEN }}
         branch: master      # target branch
 
     - name: Push new version to dev/develop
       uses: ad-m/github-push-action@v0.6.0
       with:
-        github_token: ${{ secrets.DS_GITHUB_TOKEN }}
+        github_token: ${{ secrets.GH_TOKEN }}
         branch: develop     # source branch
