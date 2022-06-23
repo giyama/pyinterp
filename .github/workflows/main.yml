@@ -21,6 +21,8 @@ jobs:
       run: |
        echo "this is build job" 
      
+    - name: work around permission issue
+      run: git config --global --add safe.directory /github/workspace
 
     - name: Bump version and push tag
       uses: jaumann/github-bumpversion-action@v0.0.7
