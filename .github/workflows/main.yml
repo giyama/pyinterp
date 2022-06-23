@@ -36,14 +36,14 @@ jobs:
       with:
         github_token: ${{ secrets.GH_TOKEN }}
         branch: master
-        force: true
+        force: false
 
     - name: Push new version to dev
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GH_TOKEN }}
         branch: develop
-        force: true
+        force: false
 #        branch: ${{ github.base_ref }}
 
 #    - name: Bump version and push tag
