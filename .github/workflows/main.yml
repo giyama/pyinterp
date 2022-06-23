@@ -24,17 +24,18 @@ jobs:
     - name: git version
       run: git --version
 
-    - name: ist folders
-      run: |
-        ls -la /
-        ls -la /github
-        ls -la /github/workspace
-
     - name: work around permission issue
       run: git config --global --add safe.directory /github/workspace
 
+#    - name: Bump version and push tag
+#      uses: jaumann/github-bumpversion-action@v0.0.7
+#      env:
+#        GITHUB_TOKEN: "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"
+#        DEFAULT_BUMP: patch
+
     - name: Bump version and push tag
-      uses: jaumann/github-bumpversion-action@v0.0.7
+      uses: anothrNick/github-tag-action@1.36.0
       env:
         GITHUB_TOKEN: "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"
+        WITH_V: true
         DEFAULT_BUMP: patch
