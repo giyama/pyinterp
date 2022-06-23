@@ -21,17 +21,19 @@ jobs:
       run: |
         echo "this is build job" 
      
-    - name: git version
-      run: git --version
+    - name: Install dependencies
+      run: |
+        pip install --upgrade bump2version
 
-    - name: work around permission issue
-      run: git config --global --add safe.directory /github/workspace
+    - name: bump
+      run: |
+        bump2version patch
 
-#    - name: Bump version and push tag
-#      uses: jaumann/github-bumpversion-action@v0.0.7
-#      env:
-#        GITHUB_TOKEN: "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"
-#        DEFAULT_BUMP: patch
+    - name: Push new version to main/master
+      uses: ad-m/github-push-action@v0.6.0
+      with:
+        github_token: ${{ secrets.GH_TOKEN }}
+        branch: ${{ github.base_ref }}
 
     - name: Bump version and push tag
       uses: anothrNick/github-tag-action@1.36.0
