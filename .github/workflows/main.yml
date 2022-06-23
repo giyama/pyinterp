@@ -22,28 +22,8 @@ jobs:
        echo "this is build job" 
      
 
-    - name: Other steps 
-      uses: actions/setup-java@v1
-      with:
-        java-version: '1.8'
-        distribution: 'adopt'
-        
-  release:
-    name: release
-    if: ${{ github.event.inputs.job-name == 'release' }}
-    runs-on: ubuntu-latest
-    
-    
-    steps:
-    - uses: actions/checkout@v2
-    
-    - name: echo
-      run: |
-       echo "this is release job" 
-     
-
-    - name: Other steps1
-      uses: actions/setup-java@v1
-      with:
-        java-version: '1.8'
-        distribution: 'adopt'
+    - name: Bump version and push tag
+      uses: jaumann/github-bumpversion-action@v0.0.7
+      env:
+        GITHUB_TOKEN: "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"
+        DEFAULT_BUMP: patch
