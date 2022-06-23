@@ -27,6 +27,8 @@ jobs:
 
     - name: bump
       run: |
+        git config --global user.email "gregory.iyama@farmersedge.ca"
+        git config --global user.name "Gregory Iyama"
         bump2version patch
 
     - name: Push new version to main/master
