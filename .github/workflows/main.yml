@@ -19,8 +19,17 @@ jobs:
     
     - name: echo
       run: |
-       echo "this is build job" 
+        echo "this is build job" 
      
+    - name: git version
+      run: git --version
+
+    - name: ist folders
+      run: |
+        ls -la /
+        ls -la /github
+        ls -la /github/workspace
+
     - name: work around permission issue
       run: git config --global --add safe.directory /github/workspace
 
