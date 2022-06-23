@@ -32,10 +32,11 @@ jobs:
         bump2version patch
 
     - name: Push new version to main/master
-      uses: ad-m/github-push-action@v0.6.0
+      uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GH_TOKEN }}
-        branch: ${{ github.base_ref }}
+        branch: develop
+#        branch: ${{ github.base_ref }}
 
     - name: Bump version and push tag
       uses: anothrNick/github-tag-action@1.36.0
