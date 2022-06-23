@@ -48,7 +48,7 @@ REQUIRED_PACKAGES = [
 
 setuptools.setup(
     name=pyinterp,
-    version='0.8.1',
+    version='0.8.2',
     description='Pre built pyinterp lib',
     install_requires=REQUIRED_PACKAGES,
     packages=setuptools.find_packages(),
