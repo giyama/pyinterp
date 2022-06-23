@@ -1,0 +1,40 @@
+name: Conditional 22 job Selection based on input
+
+on:      
+  workflow_dispatch:
+    inputs:
+      job-name:
+        description: 'Job id'
+        required: true
+
+jobs:
+  build:
+    name: build
+    # if: ${{ github.event.inputs.job-name == 'build' }}
+    runs-on: ubuntu-latest
+    
+    steps:
+
+    - uses: actions/checkout@v2
+    
+    - name: echo
+      run: |
+        echo "this is build job" 
+     
+    - name: Bump version and push tag
+      uses: giyama/github-bumpversion-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        DEFAULT_BUMP: minor
+
+    - name: Push new version to main/master
+      uses: ad-m/github-push-action@v0.6.0
+      with:
+        github_token: ${{ secrets.DS_GITHUB_TOKEN }}
+        branch: master      # target branch
+
+    - name: Push new version to dev/develop
+      uses: ad-m/github-push-action@v0.6.0
+      with:
+        github_token: ${{ secrets.DS_GITHUB_TOKEN }}
+        branch: develop     # source branch
