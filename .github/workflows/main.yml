@@ -31,16 +31,22 @@ jobs:
         git config --global user.name "Gregory Iyama"
         bump2version patch
 
-    - name: Push new version to main/master
+    - name: Push new version to dev
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GH_TOKEN }}
         branch: develop
+
+    - name: Push new version to main/master
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GH_TOKEN }}
+        branch: master
 #        branch: ${{ github.base_ref }}
 
-    - name: Bump version and push tag
-      uses: anothrNick/github-tag-action@1.36.0
-      env:
-        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-        WITH_V: true
-        DEFAULT_BUMP: patch
+#    - name: Bump version and push tag
+#      uses: anothrNick/github-tag-action@1.36.0
+#      env:
+#        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+#        WITH_V: true
+#        DEFAULT_BUMP: patch
